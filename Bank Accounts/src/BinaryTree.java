@@ -1,0 +1,78 @@
+/*---------------------------------------
+ Genuine author: <name>, I.D.: <id number>
+ Date: xx-xx-2020 
+---------------------------------------*/
+public class BinaryTree<T> {
+public static void main(String [] args){
+	BinaryTree<Integer> bn = new BinaryTree();
+	bn.insert(1);
+	bn.insert(2);
+	bn.insert(3);
+	//bn.insert();
+	//bn.insert();
+	System.out.println(bn);
+	
+	
+}
+    protected BinaryNode<T> root;
+
+    public BinaryTree() {
+        root = null;
+    }
+
+    public boolean isEmpty() {
+        return root == null;
+    }
+
+    public void insert(T element) {
+        if (isEmpty())
+            root = new BinaryNode<T>(element);
+        else
+            root.insert(element);
+    }
+
+    public void remove(T toRemove) {
+        if (!isEmpty())
+            root = root.remove(toRemove);
+    }
+
+    public boolean contains(T element) {
+        if (isEmpty())
+            return false;
+        else
+            return root.contains(element);
+    }
+
+    public int height() {
+        if (isEmpty())
+            return -1;
+        else
+            return root.height();
+    }
+
+    public int size() {
+        if (isEmpty())
+            return 0;
+        else
+            return root.size();
+    }
+
+    public boolean equals(Object other) {
+        boolean isEqual;
+        if (!(other instanceof BinaryTree<?>))
+            isEqual = false;
+        else if (isEmpty())
+            isEqual = ((BinaryTree<?>) other).isEmpty();
+        else
+            isEqual = root.equals(((BinaryTree<?>) other).root);
+        return isEqual;
+    }
+
+    public String toString() {
+        if (!isEmpty())
+            return "tree" + root.toString();
+        else
+            return "Empty Tree";
+    }
+}
+
